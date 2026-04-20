@@ -1,0 +1,61 @@
+---
+const {
+  id,
+  as = 'section',
+  inset = 'lg',
+  surface = 'none',
+  class: className,
+} = Astro.props as {
+  id?: string;
+  as?: keyof HTMLElementTagNameMap;
+  inset?: 'sm' | 'md' | 'lg' | 'xl';
+  surface?: 'none' | 'muted';
+  class?: string;
+};
+
+const Tag = as;
+---
+
+<Tag id={id} class:list={['forge-section', `forge-section--${inset}`, surface !== 'none' && `forge-section--${surface}`, className]}>
+  <div class="forge-section__inner">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .forge-section {
+    position: relative;
+  }
+
+  .forge-section--sm {
+    padding-block: var(--space-2xl);
+  }
+
+  .forge-section--md {
+    padding-block: var(--space-3xl);
+  }
+
+  .forge-section--lg {
+    padding-block: var(--space-5xl);
+  }
+
+  .forge-section--xl {
+    padding-block: var(--space-6xl);
+  }
+
+  .forge-section--muted {
+    background: color-mix(in srgb, var(--color-bg-muted) 80%, transparent);
+  }
+
+  .forge-section__inner {
+    width: min(calc(100% - 2rem), var(--size-content));
+    margin-inline: auto;
+  }
+
+  @media (max-width: 48rem) {
+    .forge-section--lg,
+    .forge-section--xl {
+      padding-block: var(--space-4xl);
+    }
+  }
+</style>

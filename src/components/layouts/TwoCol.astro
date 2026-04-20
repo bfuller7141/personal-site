@@ -1,0 +1,56 @@
+---
+interface Props {
+  ratio?: 'even' | 'content' | 'aside';
+  gap?: 'lg' | 'xl';
+  align?: 'start' | 'center';
+  class?: string;
+}
+
+const { ratio = 'even', gap = 'xl', align = 'start', class: className } = Astro.props;
+---
+
+<div class:list={['two-col', `two-col--${ratio}`, `two-col--gap-${gap}`, `two-col--align-${align}`, className]}>
+  <slot />
+</div>
+
+<style>
+  .two-col {
+    display: grid;
+  }
+
+  .two-col--even {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .two-col--content {
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  }
+
+  .two-col--aside {
+    grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .two-col--gap-lg {
+    gap: var(--space-lg);
+  }
+
+  .two-col--gap-xl {
+    gap: var(--space-3xl);
+  }
+
+  .two-col--align-start {
+    align-items: start;
+  }
+
+  .two-col--align-center {
+    align-items: center;
+  }
+
+  @media (max-width: 48rem) {
+    .two-col,
+    .two-col--content,
+    .two-col--aside {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

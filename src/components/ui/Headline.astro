@@ -1,0 +1,37 @@
+---
+const { as = 'h2', size = 'lg', align = 'start', class: className } = Astro.props;
+const Tag = as;
+---
+
+<Tag class:list={['headline', `headline--${size}`, `headline--${align}`, className]}>
+  <slot />
+</Tag>
+
+<style>
+  .headline {
+    max-width: 16ch;
+    color: var(--color-text);
+    letter-spacing: -0.045em;
+  }
+
+  .headline--sm {
+    font-size: var(--text-2xl);
+  }
+
+  .headline--md {
+    font-size: var(--text-3xl);
+  }
+
+  .headline--lg {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  }
+
+  .headline--xl {
+    font-size: clamp(var(--text-4xl), 6.2vw, var(--text-6xl));
+  }
+
+  .headline--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+</style>

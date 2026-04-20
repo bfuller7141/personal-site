@@ -1,0 +1,38 @@
+---
+const { as = 'p', size = 'md', tone = 'default', class: className } = Astro.props;
+const Tag = as;
+---
+
+<Tag class:list={['text', `text--${size}`, `text--${tone}`, className]}>
+  <slot />
+</Tag>
+
+<style>
+  .text {
+    max-width: var(--size-copy);
+  }
+
+  .text--sm {
+    font-size: var(--text-sm);
+  }
+
+  .text--md {
+    font-size: var(--text-base);
+  }
+
+  .text--lg {
+    font-size: var(--text-lg);
+  }
+
+  .text--default {
+    color: var(--color-text);
+  }
+
+  .text--soft {
+    color: var(--color-text-soft);
+  }
+
+  .text--muted {
+    color: var(--color-text-muted);
+  }
+</style>

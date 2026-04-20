@@ -1,0 +1,68 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const { href, variant = 'primary', class: className, target, rel } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag href={href} target={target} rel={rel} class:list={['button', `button--${variant}`, className]}>
+  <slot />
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding-inline: 1.15rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    transition:
+      transform var(--duration-fast) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard),
+      background-color var(--duration-fast) var(--ease-standard),
+      color var(--duration-fast) var(--ease-standard),
+      box-shadow var(--duration-fast) var(--ease-standard);
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button--primary {
+    background: var(--color-accent);
+    color: var(--neutral-950);
+    box-shadow: 0 12px 25px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  }
+
+  .button--primary:hover {
+    background: var(--color-accent-strong);
+  }
+
+  .button--secondary {
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-panel);
+    color: var(--color-text);
+  }
+
+  .button--secondary:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 32%, var(--color-border-strong));
+  }
+
+  .button--ghost {
+    color: var(--color-text-soft);
+  }
+
+  .button--ghost:hover {
+    color: var(--color-accent);
+  }
+</style>

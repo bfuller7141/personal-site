@@ -1,0 +1,26 @@
+:root {
+  --color-bg: var(--neutral-0);
+  --color-bg-muted: var(--neutral-50);
+  --color-panel: rgba(255, 255, 255, 0.84);
+  --color-panel-strong: var(--neutral-0);
+  --color-panel-inset: var(--neutral-100);
+  --color-border: rgba(148, 163, 184, 0.26);
+  --color-border-strong: rgba(51, 65, 85, 0.16);
+  --color-text: var(--neutral-900);
+  --color-text-soft: var(--neutral-500);
+  --color-text-muted: var(--neutral-400);
+  --color-accent: var(--brand-lime-400);
+  --color-accent-strong: var(--brand-lime-600);
+  --color-brand: var(--brand-teal-800);
+  --color-brand-soft: var(--brand-teal-700);
+  --color-brand-deep: var(--brand-teal-900);
+
+  --surface-hero: linear-gradient(135deg, rgba(13, 79, 79, 0.08), rgba(163, 230, 53, 0.08));
+  --surface-glow: radial-gradient(circle at top right, rgba(163, 230, 53, 0.2), transparent 45%);
+  --surface-grid: linear-gradient(transparent 95%, rgba(15, 23, 42, 0.06) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(15, 23, 42, 0.06) 95%);
+
+  --text-display: var(--font-display);
+  --text-body: var(--font-body);
+  --text-mono: var(--font-mono);
+}
